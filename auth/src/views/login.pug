@@ -1,0 +1,10 @@
+html
+    body
+        form(action='/login', method='post' )
+            div.form-group
+                label Username:
+                 input.form-control(name='username', autofocus)
+            div.form-group
+                label Password:
+                input.form-control(name='password', type='password')
+            input.btn.btn-primary(type='submit', value='Login')
