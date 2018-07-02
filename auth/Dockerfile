@@ -1,5 +1,4 @@
 FROM node:9.2
-MAINTAINER Eugenge Usenko <iusenko@luxoft.com>
 
 RUN mkdir -p /opt/app
 WORKDIR /opt/server

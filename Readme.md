@@ -3,7 +3,7 @@
 Update your `hosts` files with following content:
 
 ```
-127.0.0.1       example.com gate.example.com auth.example.com app.example.com
+127.0.0.1       example.com auth.example.com app.example.com
 ```
 
 # Build & Run

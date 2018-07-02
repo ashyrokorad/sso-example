@@ -8,6 +8,7 @@
         "build": "babel src -s -D -d dist --presets env,stage-0",
         "test": "jest --forceExit --detectOpenHandles"
     },
+    
     "dependencies": {
         "cookie-parser": "^1.4.3",
         "express": "^4.16.3",

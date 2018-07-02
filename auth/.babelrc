@@ -11,7 +11,8 @@
                     "./src"
                 ],
                 "alias": {
-                    "@midleware": "./src/midleware"
+                    "@midleware": "./src/midleware",
+                    "@data": "./src/data"
                 }
             }
         ]
