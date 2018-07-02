@@ -4,7 +4,7 @@ import Status from 'http-status-codes';
 
 const users = Object.freeze([
     { id: 1, username: 'admin', password: 'admin' },
-    { id: 2, username: 'dboard', password: 'dboard' }
+    { id: 2, username: 'user', password: 'user' }
 ]);
 
 const findOne = (username, password) => users
@@ -43,10 +43,7 @@ passport.deserializeUser(function (id, done) {
  * Middleware defined behavior and redirection policy for failed and success
  * logins.
  */
-export const redirect = passport.authenticate('local', {
-    successRedirect: '/user',
-    failureRedirect: '/login'
-});
+export const redirect = passport.authenticate('local', { failureRedirect: '/login' });
 
 /**
  * Middleware checks whether client is authenticated and if not - blocks

@@ -1,0 +1,43 @@
+@startuml
+autonumber
+
+Actor Client
+
+participant Nginx
+participant Auth
+participant App
+
+
+== Not authenticated ==
+
+Client --> Nginx: GET /app 
+Nginx --> Auth: GET /user
+Auth -> Nginx: HTTP 401
+Nginx --> Auth: GET /login
+Auth -> Nginx: Login page
+Nginx -> Client: Login page
+
+Client --> Auth: POST /login
+note right: credentials
+Auth --> Auth: create session
+Auth -> Client: HTTP 302 /app + cookie
+
+== Authenticated ==
+
+Client --> Nginx: GET /app
+Nginx --> Auth: GET /user
+Auth -> Nginx: HTTP 200
+Nginx --> App: GET /
+App -> Nginx: response
+Nginx -> Client: response
+
+== Session expired or invalid ==
+
+Client --> Nginx: GET /app
+Nginx --> Auth: GET /user
+Auth -> Nginx: HTTP 401
+Nginx --> Auth: GET /login
+Auth -> Nginx: Login page
+Nginx -> Client: Login page
+
+@enduml

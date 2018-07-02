@@ -32,7 +32,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/login', (req, res) => res.render('login'));
-app.post('/login', redirect);
+app.post('/login', redirect, (req, res) => {
+    const uri = req.cookies.redirect;
+    if (uri) return res.redirect(uri);
+    res.send({ user: req.user }).end();
+});
 
 app.get('/user', guard, (req, res) =>
     res.send({ user: req.user }).end());
