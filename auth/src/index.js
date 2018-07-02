@@ -21,11 +21,16 @@ app.use(cookieParser());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(session({ secret: APP_SECRET, resave: true, saveUninitialized: true }));
+app.use(session({
+    secret: APP_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { domain: '.example.com' },
+
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//curl -d '{"username":"sso", "password":"sso"}' -H "Content-Type: application/json" -X POST http://localhost:8080/login
 app.get('/login', (req, res) => res.render('login'));
 app.post('/login', redirect);
 

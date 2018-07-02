@@ -1,17 +1,17 @@
-gateway:
-  build: ./gateway
+gate.example.com:
+  build: ./gate
   ports:
     - "8080:8080"
   links:
-    - app
-    - auth
+    - app.example.com
+    - auth.example.com
 
-auth:
+auth.example.com:
   build: ./auth
   expose:
     - "8080"
 
-app:
+app.example.com:
   build: ./app
   expose:
     - "8080"
